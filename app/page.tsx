@@ -125,7 +125,7 @@ export default function Portfolio() {
     {
       period: 'Feb 2022 - Feb 2023',
       company: 'Sogesi',
-      role: 'Tech Lead/React Developer',
+      role: 'React Developer',
       location: 'Tlemcen, Algeria',
       type: 'Full-time',
       description: 'Developed new user-facing features and built reusable code libraries. Managed projects to develop high-performing platforms, reduced deployment time by 60%, increasing team productivity.'
@@ -294,18 +294,36 @@ export default function Portfolio() {
 
   return (
     <div className="min-h-screen bg-black text-white overflow-x-hidden">
-      {/* Modern Minimalist Animated Background */}
-      <div className="fixed inset-0 z-0">
-        <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-black to-slate-900"></div>
+      {/* Tech-Themed Animated Background */}
+      <div className="fixed inset-0 z-0 overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-br from-slate-950 via-black to-slate-900"></div>
+        
+        {/* Tech grid pattern */}
+        <svg className="absolute inset-0 w-full h-full opacity-5" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <pattern id="tech-grid" width="40" height="40" patternUnits="userSpaceOnUse">
+              <path d="M 40 0 L 0 0 0 40" fill="none" stroke="currentColor" strokeWidth="0.5" className="text-cyan-400"/>
+              <circle cx="0" cy="0" r="1" fill="currentColor" className="text-cyan-400"/>
+              <circle cx="40" cy="40" r="1" fill="currentColor" className="text-cyan-400"/>
+            </pattern>
+          </defs>
+          <rect width="100%" height="100%" fill="url(#tech-grid)" />
+        </svg>
+        
+        {/* Floating orbs */}
         <div 
-          className="absolute w-80 h-80 bg-gradient-to-r from-cyan-500/5 to-purple-500/5 rounded-full blur-3xl transition-all duration-500 ease-out animate-float"
+          className="absolute w-80 h-80 bg-gradient-to-r from-cyan-500/8 to-blue-500/8 rounded-full blur-3xl transition-all duration-500 ease-out animate-float"
           style={{
             left: mousePosition.x - 160,
             top: mousePosition.y - 160,
           }}
         ></div>
-        <div className="absolute top-1/3 left-1/4 w-56 h-56 bg-gradient-to-r from-blue-500/5 to-cyan-500/5 rounded-full blur-2xl animate-bounce-subtle"></div>
-        <div className="absolute bottom-1/3 right-1/4 w-72 h-72 bg-gradient-to-r from-purple-500/5 to-pink-500/5 rounded-full blur-2xl animate-float" style={{ animationDelay: '2s' }}></div>
+        <div className="absolute top-1/4 left-1/3 w-64 h-64 bg-gradient-to-r from-blue-500/6 to-cyan-500/6 rounded-full blur-3xl animate-bounce-subtle"></div>
+        <div className="absolute bottom-1/4 right-1/3 w-80 h-80 bg-gradient-to-r from-purple-500/5 to-blue-500/5 rounded-full blur-3xl animate-float" style={{ animationDelay: '2s' }}></div>
+        
+        {/* Accent lines */}
+        <div className="absolute top-1/2 left-0 w-96 h-0.5 bg-gradient-to-r from-transparent via-cyan-500/20 to-transparent opacity-30 animate-pulse"></div>
+        <div className="absolute top-1/3 right-0 w-96 h-0.5 bg-gradient-to-l from-transparent via-blue-500/20 to-transparent opacity-30 animate-pulse" style={{ animationDelay: '1s' }}></div>
       </div>
 
       {/* Enhanced Fixed Sidebar Navigation - Positioned outside content flow */}
@@ -367,7 +385,7 @@ export default function Portfolio() {
         <section id="intro" className="min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-12 pt-20 lg:pt-0 lg:ml-20">
           <div className="w-full max-w-5xl mx-auto text-center">
             <div className="mb-8 sm:mb-12">
-              <div className={`inline-flex items-center space-x-2 sm:space-x-3 glass glass-hover rounded-full px-4 sm:px-6 py-2 sm:py-3 mb-8 sm:mb-12 transition-all duration-700 ${isVisible ? 'animate-slide-in-up' : ''}`}>
+              <div className={`inline-flex items-center space-x-2 sm:space-x-3 glass glass-hover rounded-full px-4 sm:px-6 py-2 sm:py-3 mb-8 sm:mb-12 mt-8 transition-all duration-700 ${isVisible ? 'animate-slide-in-up' : ''}`}>
                 <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
                 <span className="text-xs sm:text-sm font-medium">Available for opportunities</span>
                 {mounted && currentTime && (
@@ -441,7 +459,7 @@ export default function Portfolio() {
             </h2>
             <div className="grid md:grid-cols-2 gap-8 sm:gap-12 items-start md:items-center">
               <div className="animate-slide-in-left order-2 md:order-1">
-                <h3 className="text-2xl sm:text-3xl font-semibold mb-5 sm:mb-6 text-white">Frontend-Focused Full Stack Developer</h3>
+                <h3 className="text-2xl sm:text-3xl font-semibold mb-5 sm:mb-6 text-white">Software Engineer</h3>
                 <p className="text-sm sm:text-base text-gray-300 mb-5 sm:mb-6 leading-relaxed">
                   I'm a passionate developer with 5+ years of experience building modern web applications. 
                   While I work across the full stack, my heart lies in frontend development - creating 
@@ -507,7 +525,7 @@ export default function Portfolio() {
                   
                   {/* Content Card */}
                   <div className={`ml-14 sm:ml-20 md:ml-0 md:w-1/2 ${index % 2 === 0 ? 'md:pr-10 lg:pr-16' : 'md:pl-10 lg:pl-16'}`}>
-                    <div className="glass glass-hover rounded-lg sm:rounded-2xl p-5 sm:p-8 card-hover transform transition-all duration-700">
+                    <div className={`glass glass-hover rounded-lg sm:rounded-2xl p-5 sm:p-8 card-hover transform transition-all duration-700 ${exp.current ? 'border-2 border-green-500 shadow-lg shadow-green-500/30' : ''}`}>
                       <div className="flex flex-wrap items-center gap-2 sm:gap-3 mb-4">
                         <span className="bg-gradient-to-r from-cyan-600 to-blue-600 px-3 sm:px-4 py-1 rounded-full text-xs sm:text-sm font-medium">
                           {exp.type}
@@ -540,16 +558,17 @@ export default function Portfolio() {
           </div>
         </section>
 
-        {/* Modern Skills Section */}
+        {/* Modern Skills Section with Carousel */}
         <section id="skills" className="py-16 sm:py-20 px-4 sm:px-6 lg:px-12 lg:ml-20">
-          <div className="w-full max-w-6xl mx-auto">
+          <div className="w-full max-w-7xl mx-auto">
             <h2 className="text-4xl sm:text-5xl font-bold text-center mb-12 sm:mb-16 gradient-text animate-slide-in-up">
               Skills & Technologies
             </h2>
-            <div className="space-y-10 sm:space-y-12">
+            
+            <div className="space-y-12 sm:space-y-16">
               {Object.entries(skillsByCategory).map(([category, categorySkills], categoryIndex) => (
-                <div key={category}>
-                  <h3 className="text-2xl sm:text-3xl font-bold text-white mb-6 capitalize animate-slide-in-up">
+                <div key={category} className="animate-slide-in-up">
+                  <h3 className="text-xl sm:text-2xl font-bold text-white mb-8 text-center">
                     <span className="bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent">
                       {category === 'frontend' && '💻 Frontend Technologies'}
                       {category === 'backend' && '⚙️ Backend Technologies'}
@@ -558,33 +577,45 @@ export default function Portfolio() {
                       {category === 'other' && '🛠️ Tools & Others'}
                     </span>
                   </h3>
-                  <div className="grid md:grid-cols-2 gap-6 sm:gap-8">
-                    {categorySkills.map((skill, index) => (
-                      <div 
-                        key={`${category}-${index}`}
-                        className={`glass glass-hover rounded-lg sm:rounded-2xl p-5 sm:p-6 card-hover stagger-${index + 1} animate-slide-in-up`}
-                      >
-                        <div className="flex justify-between items-center mb-3 sm:mb-4">
-                          <h4 className="text-base sm:text-lg font-semibold text-white">{skill.name}</h4>
-                          <span className="text-cyan-400 font-medium text-sm sm:text-base">{skill.level}%</span>
+                  
+                  {/* Skills Carousel Container */}
+                  <div className="relative overflow-hidden py-6">
+                    <style>{`
+                      @keyframes scrollSkills${categoryIndex} {
+                        0% { transform: translateX(0); }
+                        100% { transform: translateX(-100%); }
+                      }
+                      .skills-carousel-${categoryIndex} {
+                        animation: scrollSkills${categoryIndex} ${40 + categorySkills.length * 3}s linear infinite;
+                        display: flex;
+                        gap: 1rem;
+                      }
+                      .skills-carousel-${categoryIndex}:hover {
+                        animation-play-state: paused;
+                      }
+                    `}</style>
+                    
+                    <div className={`flex gap-4 sm:gap-6 skills-carousel-${categoryIndex}`}>
+                      {[...categorySkills, ...categorySkills].map((skill, index) => (
+                        <div
+                          key={`${category}-${index}`}
+                          className="flex-shrink-0 group"
+                        >
+                          <div className="glass glass-hover rounded-lg sm:rounded-xl p-4 sm:p-5 card-hover text-center min-w-max backdrop-blur-md border border-cyan-500/20 hover:border-cyan-500/50 transition-all duration-300">
+                            <div className="text-2xl sm:text-3xl font-bold bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent mb-2 group-hover:scale-110 transition-transform duration-300">
+                              {skill.level}%
+                            </div>
+                            <h4 className="text-sm sm:text-base font-semibold text-white whitespace-nowrap">{skill.name}</h4>
+                            <div className="mt-3 w-24 sm:w-28 h-1 sm:h-1.5 bg-gray-700 rounded-full overflow-hidden mx-auto">
+                              <div
+                                className="bg-gradient-to-r from-cyan-500 to-blue-500 h-full rounded-full"
+                                style={{ width: `${skill.level}%` }}
+                              ></div>
+                            </div>
+                          </div>
                         </div>
-                        <div className="w-full bg-gray-700 rounded-full h-2 sm:h-3 overflow-hidden flex">
-                          <div
-                            className="bg-gradient-to-r from-cyan-500 to-blue-500 h-full transition-all duration-1000"
-                            style={{
-                              width: `${skill.level}%`,
-                              animationDelay: `${(categoryIndex * 5 + index) * 100}ms`,
-                            }}
-                          ></div>
-                          <div
-                            className="bg-gray-600/50 h-full transition-all duration-1000"
-                            style={{
-                              width: `${100 - skill.level}%`,
-                            }}
-                          ></div>
-                        </div>
-                      </div>
-                    ))}
+                      ))}
+                    </div>
                   </div>
                 </div>
               ))}
