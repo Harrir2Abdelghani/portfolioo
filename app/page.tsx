@@ -227,31 +227,22 @@ export default function Portfolio() {
 
   const projects = [
     {
-      title: 'Coming Soon Project 1',
-      description: 'Exciting new project under development. Stay tuned for more details!',
-      image: '',
-      technologies: ['React', 'Next.js', 'TypeScript'],
-      liveUrl: '#',
-      features: ['Feature 1', 'Feature 2'],
-      category: 'Upcoming'
+      title: 'Canstory',
+      description: 'A solidarity platform against cancer in Algeria, providing reliable medical information, community support, and practical guidance for patients and their families.',
+      image: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Capture.PNG-TNd1n5oA66OCKuaKzycma0ywXX5kmk.png',
+      technologies: ['React', 'Next.js', 'Tailwind CSS', 'Node.js'],
+      liveUrl: 'https://canstory.vercel.app/',
+      features: ['Patient Community', 'Medical Information', 'Nutrition Guides', 'Professional Directory'],
+      category: 'Healthcare'
     },
     {
-      title: 'Coming Soon Project 2',
-      description: 'Innovative solution in progress. More information coming soon!',
-      image: '',
-      technologies: ['Node.js', 'PostgreSQL', 'Express'],
-      liveUrl: '#',
-      features: ['Feature 1', 'Feature 2'],
-      category: 'Upcoming'
-    },
-    {
-      title: 'Coming Soon Project 3',
-      description: 'Next generation application being built. Expected launch soon!',
-      image: '',
-      technologies: ['React', 'Tailwind', 'Supabase'],
-      liveUrl: '#',
-      features: ['Feature 1', 'Feature 2'],
-      category: 'Upcoming'
+      title: 'Courstory',
+      description: 'An interactive English learning platform where each lesson tells a story, allowing students to experience real-life situations and learn through engaging narratives.',
+      image: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/courstory.PNG-UsmYiGCOrU0Yces56kfCoHdX7tR2UB.png',
+      technologies: ['React', 'Next.js', 'TypeScript', 'Tailwind CSS'],
+      liveUrl: 'https://www.courstory.com/',
+      features: ['Interactive Lessons', 'Story-based Learning', 'Free Trials', '1500+ Lessons'],
+      category: 'EdTech'
     },
     {
       title: 'MyHuman App',
@@ -298,15 +289,7 @@ export default function Portfolio() {
       features: ['Order Tracking Dashboard','Delivery Agent Management','Real-Time Order Updates','Multi-Vendor Support'],
       category: 'Ecommerce Solution'
     },
-    {
-      title: 'Confirmoo Dashboard',
-      description: 'A comprehensive business dashboard for managing orders, analyzing customer data, and tracking business performance. Provides detailed insights and reporting capabilities.',
-      image: '/images/dashboard.PNG',
-      technologies: ['React', 'Next.js', 'D3.js', 'Tailwind CSS', 'Express.js'],
-      liveUrl: 'https://www.confirmoo.com/dashboard',
-     features: ['Order Tracking Dashboard','Delivery Agent Management','Real-Time Order Updates','Multi-Vendor Support'],
-      category: 'Ecommerce Dashboard'
-    }
+
   ];
 
   return (
