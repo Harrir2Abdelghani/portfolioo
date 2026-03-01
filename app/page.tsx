@@ -83,79 +83,115 @@ export default function Portfolio() {
 
   const workExperience = [
     {
-      period: 'Nov 2024 - Present',
-      company: 'Shabaketto Core',
-      role: 'Frontend React Developer',
-      location: 'Algeria',
+      period: 'Aug 2025 - Present',
+      company: 'Albert-Learning',
+      role: 'React/Next.js Developer',
+      location: 'Marseille, France',
       type: 'Full-time',
-      description: 'Building responsive interfaces with React and modern frontend technologies. Developing user-friendly web applications with focus on performance optimization and clean code architecture.',
+      description: 'Built full-stack web applications using Next.js and Supabase for scalable and serverless solutions. Developed real-time data features with Supabase Postgres, implemented SSR/SSG for improved SEO and performance.',
       current: true
     },
     {
-      period: 'Oct 2024 - Present',
-      company: 'Attaraxia',
-      role: 'Senior Frontend Developer',
+      period: 'May 2025 - Present',
+      company: 'Confirmoo',
+      role: 'MERN Stack Developer',
+      location: 'Algiers, Algeria',
+      type: 'Full-time',
+      description: 'Designing and maintaining software systems with 20% performance optimization. Designed scalable REST APIs and integrated with frontend components, optimized performance through code-splitting and lazy loading.',
+      current: true
+    },
+    {
+      period: 'Nov 2024 - Sep 2025',
+      company: 'Attraxia',
+      role: 'Senior Web Developer',
       location: 'Tallinn, Estonia',
       type: 'Remote',
-      description: 'Leading frontend development with React and TypeScript. Mentoring junior developers and establishing best practices for component architecture and state management.',
-      current: true
+      description: 'Developed new features using React and TypeScript. Implemented REST APIs and optimized calls to reduce load times by 15%. Collaborated with cross-functional teams and debugged issues to improve user experience.',
+      current: false
     },
     {
-      period: 'Jan 2024 - Oct 2024',
+      period: 'Nov 2024 - May 2025',
+      company: 'Shabakett Core',
+      role: 'React/Next.js Developer',
+      location: 'Algeria',
+      type: 'Full-time',
+      description: 'Provided technical support and led resolution of customer inquiries. Played leadership role in technical design of new systems. Expanded user reach by making app functional on all screen sizes, increasing traffic by 20%.',
+      current: false
+    },
+    {
+      period: 'Jan 2024 - Nov 2024',
       company: 'Bayt.com',
       role: 'Frontend React Developer',
       location: 'Riyadh, Saudi Arabia',
       type: 'Full-time',
-      description: 'Built responsive web applications with React and Next.js for the leading job portal in the Middle East. Implemented SEO optimizations and improved page load speeds by 40%.'
+      description: 'Created fast and SEO-friendly web experiences with server-side rendering. Developed and implemented architectures for web applications, enhanced project efficiency by 25% through user-friendly interfaces.'
     },
     {
-      period: 'Mar 2023 - Jan 2024',
-      company: 'Ibn Khaldoun Univ',
-      role: 'Software Development Engineer',
-      location: 'Tiaret, Algeria',
-      type: 'Full-time',
-      description: 'Designed and maintained software systems, optimizing performance by 20%. Collaborated with cross-functional teams to deliver scalable solutions for university management systems.'
-    },
-    {
-      period: 'Jul 2022 - Aug 2023',
+      period: 'Aug 2022 - Sep 2023',
       company: 'SoBiapi',
       role: 'Full Stack Web Developer',
       location: 'Lille, France',
-      type: 'Remote',
-      description: 'Delivered front and back-end development across mobile and web applications. Integrated third-party APIs and implemented real-time features using WebSocket technology.'
+      type: 'Full-time',
+      description: 'Delivered front and back-end development across mobile and web applications. Developed server-side-rendered React applications that improved page load times by 40% and enhanced user interaction.'
     },
     {
-      period: 'Jan 2022 - Jan 2023',
+      period: 'Feb 2022 - Feb 2023',
       company: 'Sogesi',
-      role: 'React Developer',
+      role: 'Tech Lead/React Developer',
       location: 'Tlemcen, Algeria',
       type: 'Full-time',
-      description: 'Led stand-ups and agile meetings to plan and deliver on project goals. Developed reusable component libraries and implemented automated testing strategies.'
+      description: 'Developed new user-facing features and built reusable code libraries. Managed projects to develop high-performing platforms, reduced deployment time by 60%, increasing team productivity.'
     },
     {
-      period: 'Aug 2020 - Nov 2021',
-      company: 'Ibn Khaldoun Univ',
+      period: 'Sep 2020 - Dec 2021',
+      company: 'Ibn Khaldoun University',
       role: 'Software Developer Intern',
       location: 'Tiaret, Algeria',
       type: 'Internship',
-      description: 'Enhanced user interaction and boosted customer satisfaction with instant communication features. Gained hands-on experience with modern development workflows and version control systems.'
+      description: 'Developed responsive web-based UI and intuitive interfaces. Designed user experiences targeted to customer requirements, enhanced scalability and maintainability, expanded user reach by 20%.'
     }
   ];
 
-  const skills = [
-    { name: 'React', level: 95 },
-    { name: 'Next.js', level: 90 },
-    { name: 'TypeScript', level: 85 },
-    { name: 'JavaScript', level: 95 },
-    { name: 'Tailwind CSS', level: 90 },
-    { name: 'HTML5 & CSS3', level: 95 },
-    { name: 'Node.js', level: 80 },
-    { name: 'MongoDB', level: 75 },
-    { name: 'Git & GitHub', level: 85 },
-    { name: 'Responsive Design', level: 92 },
-    { name: 'REST APIs', level: 88 },
-    { name: 'Redux/Zustand', level: 82 },
-  ];
+  const skillsByCategory = {
+    frontend: [
+      { name: 'React', level: 95 },
+      { name: 'Next.js', level: 90 },
+      { name: 'TypeScript', level: 85 },
+      { name: 'JavaScript', level: 95 },
+      { name: 'Tailwind CSS', level: 90 },
+      { name: 'HTML5 & CSS3', level: 95 },
+      { name: 'Responsive Design', level: 92 },
+      { name: 'Redux/Zustand', level: 82 },
+    ],
+    backend: [
+      { name: 'Node.js', level: 80 },
+      { name: 'Express.js', level: 78 },
+      { name: 'MongoDB', level: 75 },
+      { name: 'PostgreSQL', level: 82 },
+      { name: 'REST APIs', level: 88 },
+      { name: 'Supabase', level: 85 },
+      { name: 'JWT Authentication', level: 85 },
+    ],
+    mobile: [
+      { name: 'React Native', level: 75 },
+      { name: 'Mobile Optimization', level: 88 },
+      { name: 'Responsive Design', level: 92 },
+    ],
+    deployment: [
+      { name: 'Vercel', level: 92 },
+      { name: 'AWS', level: 78 },
+      { name: 'DigitalOcean', level: 75 },
+      { name: 'Docker', level: 70 },
+      { name: 'CI/CD Pipelines', level: 80 },
+    ],
+    other: [
+      { name: 'Git & GitHub', level: 85 },
+      { name: 'Vite', level: 88 },
+      { name: 'Webpack', level: 75 },
+      { name: 'Figma', level: 70 },
+      { name: 'Testing (Jest)', level: 80 },
+    ]
+  };
 
   const projects = [
     {
@@ -231,8 +267,8 @@ export default function Portfolio() {
       </div>
 
       {/* Enhanced Fixed Sidebar Navigation */}
-      <nav className="fixed left-6 top-1/2 transform -translate-y-1/2 z-50 hidden lg:block">
-        <div className="glass glass-hover rounded-2xl p-2 w-14 shadow-2xl backdrop-blur-xl">
+      <nav className="fixed left-4 top-1/2 transform -translate-y-1/2 z-40 hidden lg:block pointer-events-none">
+        <div className="glass glass-hover rounded-2xl p-2 w-14 shadow-2xl backdrop-blur-xl pointer-events-auto">
           {navItems.map((item, index) => (
             <button
               key={item.id}
@@ -256,8 +292,8 @@ export default function Portfolio() {
       {/* Enhanced Mobile Header */}
       <header className="lg:hidden fixed top-0 left-0 right-0 z-50 px-4 pt-4 sm:px-6">
         <div className={`glass glass-hover rounded-xl px-5 py-3 flex justify-between items-center transition-all duration-500 ${isVisible ? 'animate-slide-in-up' : ''}`}>
-          <div className="text-base sm:text-lg font-bold gradient-text">
-            HHA
+          <div className="text-sm sm:text-base font-bold gradient-text truncate">
+            Harrir Habib Abdelghani
           </div>
           <button
             onClick={() => setIsMenuOpen(!isMenuOpen)}
@@ -284,7 +320,7 @@ export default function Portfolio() {
       </header>
 
       {/* Main Content */}
-      <main className="relative z-10">
+      <main className="relative z-10 lg:ml-0">
         {/* Modern Hero Section */}
         <section id="intro" className="min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-12 pt-20 lg:pt-0">
           <div className="w-full max-w-5xl mx-auto text-center">
@@ -464,30 +500,45 @@ export default function Portfolio() {
             <h2 className="text-4xl sm:text-5xl font-bold text-center mb-12 sm:mb-16 gradient-text animate-slide-in-up">
               Skills & Technologies
             </h2>
-            <div className="grid md:grid-cols-2 gap-6 sm:gap-8">
-              {skills.map((skill, index) => (
-                <div 
-                  key={index} 
-                  className={`glass glass-hover rounded-lg sm:rounded-2xl p-5 sm:p-6 card-hover stagger-${index + 1} animate-slide-in-up`}
-                >
-                  <div className="flex justify-between items-center mb-3 sm:mb-4">
-                    <h3 className="text-base sm:text-xl font-semibold text-white">{skill.name}</h3>
-                    <span className="text-cyan-400 font-medium text-sm sm:text-base">{skill.level}%</span>
-                  </div>
-                  <div className="w-full bg-gray-700 rounded-full h-2 sm:h-3 overflow-hidden flex">
-                    <div
-                      className="bg-gradient-to-r from-cyan-500 to-blue-500 h-full transition-all duration-1000"
-                      style={{
-                        width: `${skill.level}%`,
-                        animationDelay: `${index * 100}ms`,
-                      }}
-                    ></div>
-                    <div
-                      className="bg-gray-600/50 h-full transition-all duration-1000"
-                      style={{
-                        width: `${100 - skill.level}%`,
-                      }}
-                    ></div>
+            <div className="space-y-10 sm:space-y-12">
+              {Object.entries(skillsByCategory).map(([category, categorySkills], categoryIndex) => (
+                <div key={category}>
+                  <h3 className="text-2xl sm:text-3xl font-bold text-white mb-6 capitalize animate-slide-in-up">
+                    <span className="bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent">
+                      {category === 'frontend' && '💻 Frontend Technologies'}
+                      {category === 'backend' && '⚙️ Backend Technologies'}
+                      {category === 'mobile' && '📱 Mobile Development'}
+                      {category === 'deployment' && '🚀 Deployment & DevOps'}
+                      {category === 'other' && '🛠️ Tools & Others'}
+                    </span>
+                  </h3>
+                  <div className="grid md:grid-cols-2 gap-6 sm:gap-8">
+                    {categorySkills.map((skill, index) => (
+                      <div 
+                        key={`${category}-${index}`}
+                        className={`glass glass-hover rounded-lg sm:rounded-2xl p-5 sm:p-6 card-hover stagger-${index + 1} animate-slide-in-up`}
+                      >
+                        <div className="flex justify-between items-center mb-3 sm:mb-4">
+                          <h4 className="text-base sm:text-lg font-semibold text-white">{skill.name}</h4>
+                          <span className="text-cyan-400 font-medium text-sm sm:text-base">{skill.level}%</span>
+                        </div>
+                        <div className="w-full bg-gray-700 rounded-full h-2 sm:h-3 overflow-hidden flex">
+                          <div
+                            className="bg-gradient-to-r from-cyan-500 to-blue-500 h-full transition-all duration-1000"
+                            style={{
+                              width: `${skill.level}%`,
+                              animationDelay: `${(categoryIndex * 5 + index) * 100}ms`,
+                            }}
+                          ></div>
+                          <div
+                            className="bg-gray-600/50 h-full transition-all duration-1000"
+                            style={{
+                              width: `${100 - skill.level}%`,
+                            }}
+                          ></div>
+                        </div>
+                      </div>
+                    ))}
                   </div>
                 </div>
               ))}
