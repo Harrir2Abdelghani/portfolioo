@@ -31,7 +31,7 @@ function TypingAnimation({ text, speed = 80 }: { text: string; speed?: number })
         }
       }
     }, speed);
-    
+
     return () => clearTimeout(timer);
   }, [index, text, speed, isDeleting]);
 
@@ -56,12 +56,12 @@ export default function Portfolio() {
   useEffect(() => {
     setMounted(true);
     setIsVisible(true);
-    
+
     const updateTime = () => {
       const now = new Date();
-      setCurrentTime(now.toLocaleTimeString('en-US', { 
+      setCurrentTime(now.toLocaleTimeString('en-US', {
         timeZone: 'Africa/Algiers',
-        hour12: false 
+        hour12: false
       }));
     };
 
@@ -88,7 +88,7 @@ export default function Portfolio() {
         const rect = card.getBoundingClientRect();
         const cardCenter = rect.top + rect.height / 2;
         const viewportCenter = window.innerHeight / 2;
-        
+
         if (cardCenter < viewportCenter + 200 && !revealedExperiences.has(index)) {
           setRevealedExperiences(prev => new Set(prev).add(index));
         }
@@ -101,7 +101,7 @@ export default function Portfolio() {
 
     window.addEventListener('scroll', handleScroll);
     window.addEventListener('mousemove', handleMouseMove);
-    
+
     return () => {
       window.removeEventListener('scroll', handleScroll);
       window.removeEventListener('mousemove', handleMouseMove);
@@ -299,7 +299,7 @@ export default function Portfolio() {
       image: '/images/shabakett.PNG',
       technologies: ['React', 'Next.js', 'Socket.io', 'Tailwind CSS', 'MongoDB'],
       liveUrl: 'https://www.shabakett.com/',
-      features: ['User Management','Real-time Analytics','Customizable Dashboards','Role-based Access Control'],
+      features: ['User Management', 'Real-time Analytics', 'Customizable Dashboards', 'Role-based Access Control'],
       category: 'Social Platform'
     },
     {
@@ -308,7 +308,7 @@ export default function Portfolio() {
       image: '/images/confirmoo.PNG',
       technologies: ['React', 'TypeScript', 'Calendar API', 'Stripe', 'Node.js'],
       liveUrl: 'https://www.confirmoo.com/',
-      features: ['Order Tracking Dashboard','Delivery Agent Management','Real-Time Order Updates','Multi-Vendor Support'],
+      features: ['Order Tracking Dashboard', 'Delivery Agent Management', 'Real-Time Order Updates', 'Multi-Vendor Support'],
       category: 'Ecommerce Solution'
     },
 
@@ -319,21 +319,21 @@ export default function Portfolio() {
       {/* Tech-Themed Animated Background */}
       <div className="fixed inset-0 z-0 overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-slate-950 via-black to-slate-900"></div>
-        
+
         {/* Tech grid pattern */}
         <svg className="absolute inset-0 w-full h-full opacity-5" xmlns="http://www.w3.org/2000/svg">
           <defs>
             <pattern id="tech-grid" width="40" height="40" patternUnits="userSpaceOnUse">
-              <path d="M 40 0 L 0 0 0 40" fill="none" stroke="currentColor" strokeWidth="0.5" className="text-cyan-400"/>
-              <circle cx="0" cy="0" r="1" fill="currentColor" className="text-cyan-400"/>
-              <circle cx="40" cy="40" r="1" fill="currentColor" className="text-cyan-400"/>
+              <path d="M 40 0 L 0 0 0 40" fill="none" stroke="currentColor" strokeWidth="0.5" className="text-cyan-400" />
+              <circle cx="0" cy="0" r="1" fill="currentColor" className="text-cyan-400" />
+              <circle cx="40" cy="40" r="1" fill="currentColor" className="text-cyan-400" />
             </pattern>
           </defs>
           <rect width="100%" height="100%" fill="url(#tech-grid)" />
         </svg>
-        
+
         {/* Floating orbs */}
-        <div 
+        <div
           className="absolute w-80 h-80 bg-gradient-to-r from-cyan-500/8 to-blue-500/8 rounded-full blur-3xl transition-all duration-500 ease-out animate-float"
           style={{
             left: mousePosition.x - 160,
@@ -342,7 +342,7 @@ export default function Portfolio() {
         ></div>
         <div className="absolute top-1/4 left-1/3 w-64 h-64 bg-gradient-to-r from-blue-500/6 to-cyan-500/6 rounded-full blur-3xl animate-bounce-subtle"></div>
         <div className="absolute bottom-1/4 right-1/3 w-80 h-80 bg-gradient-to-r from-purple-500/5 to-blue-500/5 rounded-full blur-3xl animate-float" style={{ animationDelay: '2s' }}></div>
-        
+
         {/* Accent lines */}
         <div className="absolute top-1/2 left-0 w-96 h-0.5 bg-gradient-to-r from-transparent via-cyan-500/20 to-transparent opacity-30 animate-pulse"></div>
         <div className="absolute top-1/3 right-0 w-96 h-0.5 bg-gradient-to-l from-transparent via-blue-500/20 to-transparent opacity-30 animate-pulse" style={{ animationDelay: '1s' }}></div>
@@ -355,11 +355,10 @@ export default function Portfolio() {
             <button
               key={item.id}
               onClick={() => scrollToSection(item.id)}
-              className={`w-full h-10 rounded-lg mb-1 flex items-center justify-center transition-all duration-500 relative overflow-hidden group ${
-                activeSection === item.id
+              className={`w-full h-10 rounded-lg mb-1 flex items-center justify-center transition-all duration-500 relative overflow-hidden group ${activeSection === item.id
                   ? 'bg-gradient-to-r from-cyan-500 to-blue-500 text-white shadow-lg shadow-cyan-500/20 animate-glow'
                   : 'text-gray-500 hover:text-white hover:bg-white/10'
-              } stagger-${index + 1} animate-slide-in-left`}
+                } stagger-${index + 1} animate-slide-in-left`}
               title={item.label}
             >
               <item.icon size={16} className="transition-transform duration-300 group-hover:scale-110" />
@@ -384,7 +383,7 @@ export default function Portfolio() {
             {isMenuOpen ? <X size={18} /> : <Menu size={18} />}
           </button>
         </div>
-        
+
         {isMenuOpen && (
           <div className="mt-3 glass glass-hover rounded-xl p-3 animate-scale-in">
             {navItems.map((item, index) => (
@@ -416,13 +415,13 @@ export default function Portfolio() {
                   </span>
                 )}
               </div>
-              
+
               <h1 className={`text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-bold mb-6 sm:mb-8 leading-tight transition-all duration-1000 ${isVisible ? 'animate-slide-in-up stagger-2' : ''}`}>
                 <span className="gradient-text inline-block">
                   <TypingAnimation text="Software Engineer" speed={100} />
                 </span>
               </h1>
-              
+
               <p className={`text-base sm:text-lg md:text-xl text-gray-300 mb-10 sm:mb-12 max-w-3xl mx-auto leading-relaxed transition-all duration-1000 ${isVisible ? 'animate-slide-in-up stagger-3' : ''}`}>
                 Crafting exceptional digital experiences with React, Next.js, and modern web technologies. Passionate about clean code, beautiful interfaces, and performance optimization.
               </p>
@@ -431,7 +430,7 @@ export default function Portfolio() {
             <div className={`flex flex-col sm:flex-row flex-wrap justify-center gap-4 sm:gap-6 mb-12 sm:mb-16 transition-all duration-1000 ${isVisible ? 'animate-slide-in-up stagger-4' : ''}`}>
               <button
                 onClick={() => scrollToSection('contact')}
-                className="group bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-xl sm:rounded-2xl transition-all duration-500 transform hover:scale-105 flex items-center justify-center space-x-2 sm:space-x-3 btn-modern animate-glow text-sm sm:text-base shadow-lg shadow-cyan-500/50 hover:shadow-cyan-500/70 active:shadow-cyan-500/30 active:scale-95"
+                className="group bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-xl sm:rounded-2xl flex items-center justify-center space-x-2 sm:space-x-3 btn-modern a text-sm sm:text-base"
               >
                 <Coffee size={18} className="sm:w-5 sm:h-5 group-hover:rotate-12 transition-transform duration-300" />
                 <span className="font-medium">Let's Talk</span>
@@ -460,8 +459,8 @@ export default function Portfolio() {
                 { metric: '4', label: 'Countries', icon: Globe },
                 { metric: '15+', label: 'Technologies', icon: Code },
               ].map((achievement, index) => (
-                <div 
-                  key={index} 
+                <div
+                  key={index}
                   className={`glass glass-hover rounded-lg sm:rounded-2xl p-4 sm:p-6 text-center card-hover stagger-${index + 1} animate-slide-in-up`}
                 >
                   <achievement.icon className="mx-auto mb-2 sm:mb-3 text-cyan-400 animate-bounce-subtle w-5 h-5 sm:w-6 sm:h-6" />
@@ -483,13 +482,13 @@ export default function Portfolio() {
               <div className="animate-slide-in-left order-2 md:order-1">
                 <h3 className="text-2xl sm:text-3xl font-semibold mb-5 sm:mb-6 text-white">Software Engineer</h3>
                 <p className="text-sm sm:text-base text-gray-300 mb-5 sm:mb-6 leading-relaxed">
-                  I'm a passionate developer with 5+ years of experience building modern web applications. 
-                  While I work across the full stack, my heart lies in frontend development - creating 
+                  I'm a passionate developer with 5+ years of experience building modern web applications.
+                  While I work across the full stack, my heart lies in frontend development - creating
                   beautiful, intuitive user interfaces that provide exceptional user experiences.
                 </p>
                 <p className="text-sm sm:text-base text-gray-300 mb-6 sm:mb-8 leading-relaxed">
-                  I specialize in React, Next.js, and TypeScript, and I'm always exploring new technologies 
-                  to stay at the forefront of web development. I believe in writing clean, maintainable code 
+                  I specialize in React, Next.js, and TypeScript, and I'm always exploring new technologies
+                  to stay at the forefront of web development. I believe in writing clean, maintainable code
                   and following best practices.
                 </p>
                 <div className="flex flex-wrap gap-2 sm:gap-3">
@@ -526,13 +525,13 @@ export default function Portfolio() {
             <h2 className="text-4xl sm:text-5xl font-bold text-center mb-12 sm:mb-16 gradient-text animate-slide-in-up">
               Experience Timeline
             </h2>
-            
+
             <div className="relative">
               {/* Timeline Line */}
               <div className="absolute left-6 sm:left-8 md:left-1/2 transform md:-translate-x-1/2 w-0.5 md:w-1 h-full bg-gradient-to-b from-cyan-500 to-blue-600 rounded-full animate-shimmer"></div>
-              
+
               {workExperience.map((exp, index) => (
-                <div 
+                <div
                   key={index}
                   data-experience-index={index}
                   className={`relative flex items-start mb-10 sm:mb-16 transition-all duration-1000 ${index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'} ${revealedExperiences.has(index) ? 'opacity-100 translate-y-0 scale-100' : 'opacity-0 translate-y-20 scale-95'}`}
@@ -544,7 +543,7 @@ export default function Portfolio() {
                   <div className="absolute left-3 sm:left-4 md:left-1/2 transform md:-translate-x-1/2 w-4 h-4 sm:w-6 sm:h-6 bg-gradient-to-r from-cyan-500 to-blue-600 rounded-full border-3 sm:border-4 border-black flex items-center justify-center z-10 animate-glow mt-1.5 sm:mt-2">
                     {exp.current && <div className="w-1.5 h-1.5 bg-white rounded-full animate-pulse"></div>}
                   </div>
-                  
+
                   {/* Content Card */}
                   <div className={`ml-14 sm:ml-20 md:ml-0 md:w-1/2 ${index % 2 === 0 ? 'md:pr-10 lg:pr-16' : 'md:pl-10 lg:pl-16'}`}>
                     <div className={`glass glass-hover rounded-lg sm:rounded-2xl p-5 sm:p-8 card-hover transform transition-all duration-700 ${exp.current ? 'border-2 border-green-500 shadow-lg shadow-green-500/30' : ''}`}>
@@ -560,7 +559,7 @@ export default function Portfolio() {
                           </span>
                         )}
                       </div>
-                      
+
                       <h3 className="text-lg sm:text-2xl font-bold text-white mb-2">{exp.role}</h3>
                       <p className="text-cyan-400 font-semibold mb-1 flex items-center text-sm sm:text-base">
                         <Building size={14} className="mr-2 sm:mr-2" />
@@ -570,7 +569,7 @@ export default function Portfolio() {
                         <MapPin size={12} className="mr-2 sm:mr-2" />
                         {exp.location}
                       </p>
-                      
+
                       <p className="text-sm sm:text-base text-gray-300 leading-relaxed">{exp.description}</p>
                     </div>
                   </div>
@@ -586,7 +585,7 @@ export default function Portfolio() {
             <h2 className="text-4xl sm:text-5xl font-bold text-center mb-12 sm:mb-16 gradient-text animate-slide-in-up">
               Skills & Technologies
             </h2>
-            
+
             <div className="space-y-12 sm:space-y-16">
               {Object.entries(skillsByCategory).map(([category, categorySkills], categoryIndex) => (
                 <div key={category} className="animate-slide-in-up">
@@ -599,7 +598,7 @@ export default function Portfolio() {
                       {category === 'other' && '🛠️ Tools & Others'}
                     </span>
                   </h3>
-                  
+
                   {/* Skills Carousel Container */}
                   <div className="relative overflow-hidden py-6">
                     <style>{`
@@ -616,7 +615,7 @@ export default function Portfolio() {
                         animation-play-state: paused;
                       }
                     `}</style>
-                    
+
                     <div className={`flex gap-4 sm:gap-6 skills-carousel-${categoryIndex}`}>
                       {[...categorySkills, ...categorySkills].map((skill, index) => (
                         <div
@@ -651,11 +650,11 @@ export default function Portfolio() {
             <h2 className="text-4xl sm:text-5xl font-bold text-center mb-12 sm:mb-16 gradient-text animate-slide-in-up">
               Featured Projects
             </h2>
-            
+
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-8">
               {projects.map((project, index) => (
-                <div 
-                  key={index} 
+                <div
+                  key={index}
                   className={`glass glass-hover rounded-lg sm:rounded-2xl overflow-hidden card-hover group stagger-${index + 1} animate-scale-in`}
                 >
                   {/* Project Image */}
@@ -679,7 +678,7 @@ export default function Portfolio() {
                       {project.category}
                     </div>
                   </div>
-                  
+
                   {/* Project Content */}
                   <div className="p-4 sm:p-6">
                     <h3 className="text-base sm:text-xl font-bold text-white mb-2 sm:mb-3 group-hover:text-cyan-400 transition-colors duration-300 line-clamp-2">
@@ -688,7 +687,7 @@ export default function Portfolio() {
                     <p className="text-xs sm:text-sm text-gray-300 mb-3 sm:mb-4 leading-relaxed line-clamp-2">
                       {project.description}
                     </p>
-                    
+
                     {/* Features */}
                     <div className="mb-3 sm:mb-4">
                       <h4 className="text-xs sm:text-sm font-semibold text-gray-400 mb-1.5 sm:mb-2">Key Features:</h4>
@@ -705,7 +704,7 @@ export default function Portfolio() {
                         )}
                       </div>
                     </div>
-                    
+
                     {/* Technologies */}
                     <div className="flex flex-wrap gap-1.5 sm:gap-2 mb-4 sm:mb-6">
                       {project.technologies.slice(0, 3).map((tech, techIndex) => (
@@ -719,7 +718,7 @@ export default function Portfolio() {
                         </span>
                       )}
                     </div>
-                    
+
                     {/* Action Button */}
                     <div className="flex justify-center">
                       <a
@@ -736,7 +735,7 @@ export default function Portfolio() {
                 </div>
               ))}
             </div>
-            
+
             {/* View More Projects */}
             <div className="text-center mt-12 sm:mt-16 animate-slide-in-up">
               <p className="text-sm sm:text-base text-gray-400 mb-6">
@@ -763,7 +762,7 @@ export default function Portfolio() {
             <p className="text-base sm:text-xl text-gray-300 mb-10 sm:mb-12 animate-slide-in-up stagger-2">
               Ready to build something amazing? Let's start the conversation.
             </p>
-            
+
             <div className="grid md:grid-cols-3 gap-5 sm:gap-8 mb-10 sm:mb-12">
               {[
                 { href: 'mailto:h.harrir@esi-sba.dz', icon: Mail, title: 'Email', content: 'h.harrir@esi-sba.dz', gradient: 'from-cyan-600 to-blue-600' },
@@ -792,7 +791,7 @@ export default function Portfolio() {
             <div className="glass glass-hover rounded-lg sm:rounded-2xl p-5 sm:p-8 animate-slide-in-up stagger-4">
               <h3 className="text-xl sm:text-2xl font-semibold text-white mb-4">Currently Available</h3>
               <p className="text-sm sm:text-base text-gray-300 mb-6 leading-relaxed">
-                I'm open to new opportunities and exciting projects. Whether you're looking for a frontend developer 
+                I'm open to new opportunities and exciting projects. Whether you're looking for a frontend developer
                 or want to collaborate on something innovative, I'd love to hear from you.
               </p>
               <div className="flex flex-col sm:flex-row flex-wrap justify-center gap-3 sm:gap-4">
@@ -826,7 +825,7 @@ export default function Portfolio() {
                 Software Engineer
               </h4>
               <p className="text-sm sm:text-base text-gray-400 mb-4 sm:mb-6 leading-relaxed">
-                Passionate about creating exceptional digital experiences with modern web technologies. 
+                Passionate about creating exceptional digital experiences with modern web technologies.
                 Always learning, always building, always improving.
               </p>
               <div className="flex space-x-3 sm:space-x-4">
@@ -835,9 +834,9 @@ export default function Portfolio() {
                   { href: 'https://www.linkedin.com/in/harrir-habib-abdelghani-90741a230/', icon: Linkedin, label: 'LinkedIn profile', external: true },
                   { href: 'https://github.com/Harrir2Abdelghani', icon: Github, label: 'GitHub profile', external: true }
                 ].map((social, index) => (
-                  <a 
+                  <a
                     key={index}
-                    href={social.href} 
+                    href={social.href}
                     target={social.external ? '_blank' : undefined}
                     rel={social.external ? 'noopener noreferrer' : undefined}
                     className="text-gray-400 hover:text-cyan-400 transition-all duration-300 p-2 rounded-lg hover:bg-white/5 transform hover:scale-110"
@@ -848,7 +847,7 @@ export default function Portfolio() {
                 ))}
               </div>
             </div>
-            
+
             <div className="animate-slide-in-up stagger-2">
               <h4 className="text-white font-semibold mb-3 sm:mb-4 text-sm sm:text-base">Quick Links</h4>
               <ul className="space-y-2 sm:space-y-3">
@@ -864,7 +863,7 @@ export default function Portfolio() {
                 ))}
               </ul>
             </div>
-            
+
             <div className="animate-slide-in-up stagger-3">
               <h4 className="text-white font-semibold mb-3 sm:mb-4 text-sm sm:text-base">More</h4>
               <ul className="space-y-2 sm:space-y-3">
@@ -881,7 +880,7 @@ export default function Portfolio() {
               </ul>
             </div>
           </div>
-          
+
           <div className="border-t border-white/10 pt-6 sm:pt-8 flex flex-col md:flex-row justify-between items-center animate-slide-in-up stagger-4 gap-4 sm:gap-0">
             <p className="text-xs sm:text-sm text-gray-400 text-center md:text-left">
               © 2024 Harrir Habib Abdelghani. Crafted with passion and modern web technologies.
