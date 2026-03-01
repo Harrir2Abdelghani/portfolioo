@@ -3,6 +3,24 @@
 import React, { useState, useEffect } from 'react';
 import { ChevronDown, Mail, Phone, MapPin, Linkedin, Github, ExternalLink, Calendar, Code, Briefcase, GraduationCap, User, Menu, X, Download, Star, Award, Zap, Target, ArrowRight, Globe, Users, TrendingUp, Eye, GitBranch, Layers, Coffee, Rocket, Heart, Brain, Lightbulb, Palette, Monitor, Smartphone, Database, Server, Cloud, Shield, Building, Clock, CheckCircle, Lock, UserCheck, BarChart3, MessageSquare, Settings, ShoppingCart } from 'lucide-react';
 
+// Typing Animation Component
+function TypingAnimation({ text, speed = 100 }: { text: string; speed?: number }) {
+  const [displayedText, setDisplayedText] = useState('');
+  const [index, setIndex] = useState(0);
+
+  useEffect(() => {
+    if (index < text.length) {
+      const timer = setTimeout(() => {
+        setDisplayedText(text.substring(0, index + 1));
+        setIndex(index + 1);
+      }, speed);
+      return () => clearTimeout(timer);
+    }
+  }, [index, text, speed]);
+
+  return <>{displayedText}</>;
+}
+
 export default function Portfolio() {
   const [activeSection, setActiveSection] = useState('intro');
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -11,6 +29,7 @@ export default function Portfolio() {
   const [currentTime, setCurrentTime] = useState('');
   const [mounted, setMounted] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
+  const [revealedExperiences, setRevealedExperiences] = useState(new Set<number>());
 
   useEffect(() => {
     setMounted(true);
@@ -38,6 +57,23 @@ export default function Portfolio() {
           setActiveSection(sections[i]);
           break;
         }
+      }
+
+      // Reveal experience items based on scroll position
+      const experienceSection = document.getElementById('experience');
+      if (experienceSection) {
+        const experienceTop = experienceSection.offsetTop;
+        const experienceCards = Array.from(document.querySelectorAll('[data-experience-index]'));
+        
+        experienceCards.forEach((card) => {
+          const index = parseInt((card as HTMLElement).dataset.experienceIndex || '-1');
+          const cardTop = (card as HTMLElement).offsetTop;
+          const scrollTrigger = experienceTop + (index * 150) - 200;
+          
+          if (window.scrollY > scrollTrigger && !revealedExperiences.has(index)) {
+            setRevealedExperiences(prev => new Set(prev).add(index));
+          }
+        });
       }
     };
 
@@ -83,31 +119,36 @@ export default function Portfolio() {
 
   const workExperience = [
     {
-      period: 'Aug 2025 - Present',
-      company: 'Albert-Learning',
-      role: 'React/Next.js Developer',
-      location: 'Marseille, France',
-      type: 'Full-time',
-      description: 'Built full-stack web applications using Next.js and Supabase for scalable and serverless solutions. Developed real-time data features with Supabase Postgres, implemented SSR/SSG for improved SEO and performance.',
-      current: true
+      period: 'Sep 2020 - Dec 2021',
+      company: 'Ibn Khaldoun University',
+      role: 'Software Developer Intern',
+      location: 'Tiaret, Algeria',
+      type: 'Internship',
+      description: 'Developed responsive web-based UI and intuitive interfaces. Designed user experiences targeted to customer requirements, enhanced scalability and maintainability, expanded user reach by 20%.'
     },
     {
-      period: 'May 2025 - Present',
-      company: 'Confirmoo',
-      role: 'MERN Stack Developer',
-      location: 'Algiers, Algeria',
+      period: 'Feb 2022 - Feb 2023',
+      company: 'Sogesi',
+      role: 'Tech Lead/React Developer',
+      location: 'Tlemcen, Algeria',
       type: 'Full-time',
-      description: 'Designing and maintaining software systems with 20% performance optimization. Designed scalable REST APIs and integrated with frontend components, optimized performance through code-splitting and lazy loading.',
-      current: true
+      description: 'Developed new user-facing features and built reusable code libraries. Managed projects to develop high-performing platforms, reduced deployment time by 60%, increasing team productivity.'
     },
     {
-      period: 'Nov 2024 - Sep 2025',
-      company: 'Attraxia',
-      role: 'Senior Web Developer',
-      location: 'Tallinn, Estonia',
-      type: 'Remote',
-      description: 'Developed new features using React and TypeScript. Implemented REST APIs and optimized calls to reduce load times by 15%. Collaborated with cross-functional teams and debugged issues to improve user experience.',
-      current: false
+      period: 'Aug 2022 - Sep 2023',
+      company: 'SoBiapi',
+      role: 'Full Stack Web Developer',
+      location: 'Lille, France',
+      type: 'Full-time',
+      description: 'Delivered front and back-end development across mobile and web applications. Developed server-side-rendered React applications that improved page load times by 40% and enhanced user interaction.'
+    },
+    {
+      period: 'Jan 2024 - Nov 2024',
+      company: 'Bayt.com',
+      role: 'Frontend React Developer',
+      location: 'Riyadh, Saudi Arabia',
+      type: 'Full-time',
+      description: 'Created fast and SEO-friendly web experiences with server-side rendering. Developed and implemented architectures for web applications, enhanced project efficiency by 25% through user-friendly interfaces.'
     },
     {
       period: 'Nov 2024 - May 2025',
@@ -119,36 +160,31 @@ export default function Portfolio() {
       current: false
     },
     {
-      period: 'Jan 2024 - Nov 2024',
-      company: 'Bayt.com',
-      role: 'Frontend React Developer',
-      location: 'Riyadh, Saudi Arabia',
-      type: 'Full-time',
-      description: 'Created fast and SEO-friendly web experiences with server-side rendering. Developed and implemented architectures for web applications, enhanced project efficiency by 25% through user-friendly interfaces.'
+      period: 'Nov 2024 - Sep 2025',
+      company: 'Attraxia',
+      role: 'Senior Web Developer',
+      location: 'Tallinn, Estonia',
+      type: 'Remote',
+      description: 'Developed new features using React and TypeScript. Implemented REST APIs and optimized calls to reduce load times by 15%. Collaborated with cross-functional teams and debugged issues to improve user experience.',
+      current: false
     },
     {
-      period: 'Aug 2022 - Sep 2023',
-      company: 'SoBiapi',
-      role: 'Full Stack Web Developer',
-      location: 'Lille, France',
+      period: 'May 2025 - January 2026',
+      company: 'Confirmoo',
+      role: 'MERN Stack Developer',
+      location: 'Algiers, Algeria',
       type: 'Full-time',
-      description: 'Delivered front and back-end development across mobile and web applications. Developed server-side-rendered React applications that improved page load times by 40% and enhanced user interaction.'
+      description: 'Designing and maintaining software systems with 20% performance optimization. Designed scalable REST APIs and integrated with frontend components, optimized performance through code-splitting and lazy loading.',
+      current: false
     },
     {
-      period: 'Feb 2022 - Feb 2023',
-      company: 'Sogesi',
-      role: 'Tech Lead/React Developer',
-      location: 'Tlemcen, Algeria',
+      period: 'Aug 2025 - Present',
+      company: 'Albert-Learning',
+      role: 'React/Next.js Developer',
+      location: 'Marseille, France',
       type: 'Full-time',
-      description: 'Developed new user-facing features and built reusable code libraries. Managed projects to develop high-performing platforms, reduced deployment time by 60%, increasing team productivity.'
-    },
-    {
-      period: 'Sep 2020 - Dec 2021',
-      company: 'Ibn Khaldoun University',
-      role: 'Software Developer Intern',
-      location: 'Tiaret, Algeria',
-      type: 'Internship',
-      description: 'Developed responsive web-based UI and intuitive interfaces. Designed user experiences targeted to customer requirements, enhanced scalability and maintainability, expanded user reach by 20%.'
+      description: 'Built full-stack web applications using Next.js and Supabase for scalable and serverless solutions. Developed real-time data features with Supabase Postgres, implemented SSR/SSG for improved SEO and performance.',
+      current: true
     }
   ];
 
@@ -320,7 +356,7 @@ export default function Portfolio() {
       </header>
 
       {/* Main Content */}
-      <main className="relative z-10 lg:ml-0">
+      <main className="relative z-10 lg:pr-0">
         {/* Modern Hero Section */}
         <section id="intro" className="min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-12 pt-20 lg:pt-0">
           <div className="w-full max-w-5xl mx-auto text-center">
@@ -336,8 +372,8 @@ export default function Portfolio() {
               </div>
               
               <h1 className={`text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-bold mb-6 sm:mb-8 leading-tight transition-all duration-1000 ${isVisible ? 'animate-slide-in-up stagger-2' : ''}`}>
-                <span className="gradient-text">
-                  Software Engineer
+                <span className="gradient-text inline-block">
+                  <TypingAnimation text="Software Engineer" speed={100} />
                 </span>
               </h1>
               
@@ -451,8 +487,12 @@ export default function Portfolio() {
               
               {workExperience.map((exp, index) => (
                 <div 
-                  key={index} 
-                  className={`relative flex items-start mb-10 sm:mb-16 transition-all duration-700 ${index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'} stagger-${index + 1} animate-slide-in-up`}
+                  key={index}
+                  data-experience-index={index}
+                  className={`relative flex items-start mb-10 sm:mb-16 transition-all duration-700 ${index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'} ${revealedExperiences.has(index) ? 'scroll-reveal' : 'opacity-30'} stagger-${index + 1}`}
+                  style={{
+                    animationDelay: revealedExperiences.has(index) ? `${index * 0.1}s` : '0s'
+                  }}
                 >
                   {/* Timeline Dot */}
                   <div className="absolute left-3 sm:left-4 md:left-1/2 transform md:-translate-x-1/2 w-4 h-4 sm:w-6 sm:h-6 bg-gradient-to-r from-cyan-500 to-blue-600 rounded-full border-3 sm:border-4 border-black flex items-center justify-center z-10 animate-glow mt-1.5 sm:mt-2">
@@ -461,7 +501,7 @@ export default function Portfolio() {
                   
                   {/* Content Card */}
                   <div className={`ml-14 sm:ml-20 md:ml-0 md:w-1/2 ${index % 2 === 0 ? 'md:pr-10 lg:pr-16' : 'md:pl-10 lg:pl-16'}`}>
-                    <div className="glass glass-hover rounded-lg sm:rounded-2xl p-5 sm:p-8 card-hover">
+                    <div className="glass glass-hover rounded-lg sm:rounded-2xl p-5 sm:p-8 card-hover transform transition-all duration-700">
                       <div className="flex flex-wrap items-center gap-2 sm:gap-3 mb-4">
                         <span className="bg-gradient-to-r from-cyan-600 to-blue-600 px-3 sm:px-4 py-1 rounded-full text-xs sm:text-sm font-medium">
                           {exp.type}
