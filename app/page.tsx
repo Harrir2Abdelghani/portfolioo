@@ -59,22 +59,18 @@ export default function Portfolio() {
         }
       }
 
-      // Reveal experience items based on scroll position
-      const experienceSection = document.getElementById('experience');
-      if (experienceSection) {
-        const experienceTop = experienceSection.offsetTop;
-        const experienceCards = Array.from(document.querySelectorAll('[data-experience-index]'));
+      // Reveal experience items with better triggering
+      const experienceCards = document.querySelectorAll('[data-experience-index]');
+      experienceCards.forEach((card) => {
+        const index = parseInt((card as HTMLElement).dataset.experienceIndex || '-1');
+        const rect = card.getBoundingClientRect();
+        const cardCenter = rect.top + rect.height / 2;
+        const viewportCenter = window.innerHeight / 2;
         
-        experienceCards.forEach((card) => {
-          const index = parseInt((card as HTMLElement).dataset.experienceIndex || '-1');
-          const cardTop = (card as HTMLElement).offsetTop;
-          const scrollTrigger = experienceTop + (index * 150) - 200;
-          
-          if (window.scrollY > scrollTrigger && !revealedExperiences.has(index)) {
-            setRevealedExperiences(prev => new Set(prev).add(index));
-          }
-        });
-      }
+        if (cardCenter < viewportCenter + 200 && !revealedExperiences.has(index)) {
+          setRevealedExperiences(prev => new Set(prev).add(index));
+        }
+      });
     };
 
     const handleMouseMove = (e: MouseEvent) => {
@@ -231,6 +227,33 @@ export default function Portfolio() {
 
   const projects = [
     {
+      title: 'Coming Soon Project 1',
+      description: 'Exciting new project under development. Stay tuned for more details!',
+      image: '',
+      technologies: ['React', 'Next.js', 'TypeScript'],
+      liveUrl: '#',
+      features: ['Feature 1', 'Feature 2'],
+      category: 'Upcoming'
+    },
+    {
+      title: 'Coming Soon Project 2',
+      description: 'Innovative solution in progress. More information coming soon!',
+      image: '',
+      technologies: ['Node.js', 'PostgreSQL', 'Express'],
+      liveUrl: '#',
+      features: ['Feature 1', 'Feature 2'],
+      category: 'Upcoming'
+    },
+    {
+      title: 'Coming Soon Project 3',
+      description: 'Next generation application being built. Expected launch soon!',
+      image: '',
+      technologies: ['React', 'Tailwind', 'Supabase'],
+      liveUrl: '#',
+      features: ['Feature 1', 'Feature 2'],
+      category: 'Upcoming'
+    },
+    {
       title: 'MyHuman App',
       description: 'A modern AI-powered dating platform that offers intelligent matchmaking, real-time communication, and a seamless user experience. Built with modern React architecture, it emphasizes intuitive design and personalized relationship discovery.',
       image: '/images/humain.PNG',
@@ -302,8 +325,8 @@ export default function Portfolio() {
         <div className="absolute bottom-1/3 right-1/4 w-72 h-72 bg-gradient-to-r from-purple-500/5 to-pink-500/5 rounded-full blur-2xl animate-float" style={{ animationDelay: '2s' }}></div>
       </div>
 
-      {/* Enhanced Fixed Sidebar Navigation */}
-      <nav className="fixed left-4 top-1/2 transform -translate-y-1/2 z-40 hidden lg:block pointer-events-none">
+      {/* Enhanced Fixed Sidebar Navigation - Positioned outside content flow */}
+      <nav className="fixed left-0 top-0 bottom-0 z-30 hidden lg:flex items-center justify-start pl-4 w-20 pointer-events-none">
         <div className="glass glass-hover rounded-2xl p-2 w-14 shadow-2xl backdrop-blur-xl pointer-events-auto">
           {navItems.map((item, index) => (
             <button
@@ -356,9 +379,9 @@ export default function Portfolio() {
       </header>
 
       {/* Main Content */}
-      <main className="relative z-10 lg:pr-0">
+      <main className="relative z-10">
         {/* Modern Hero Section */}
-        <section id="intro" className="min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-12 pt-20 lg:pt-0">
+        <section id="intro" className="min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-12 pt-20 lg:pt-0 lg:ml-20">
           <div className="w-full max-w-5xl mx-auto text-center">
             <div className="mb-8 sm:mb-12">
               <div className={`inline-flex items-center space-x-2 sm:space-x-3 glass glass-hover rounded-full px-4 sm:px-6 py-2 sm:py-3 mb-8 sm:mb-12 transition-all duration-700 ${isVisible ? 'animate-slide-in-up' : ''}`}>
@@ -428,7 +451,7 @@ export default function Portfolio() {
         </section>
 
         {/* Modern About Section */}
-        <section id="about" className="py-16 sm:py-20 px-4 sm:px-6 lg:px-12">
+        <section id="about" className="py-16 sm:py-20 px-4 sm:px-6 lg:px-12 lg:ml-20">
           <div className="w-full max-w-6xl mx-auto">
             <h2 className="text-4xl sm:text-5xl font-bold text-center mb-12 sm:mb-16 gradient-text animate-slide-in-up">
               About Me
@@ -475,7 +498,7 @@ export default function Portfolio() {
         </section>
 
         {/* Modern Experience Timeline Section */}
-        <section id="experience" className="py-16 sm:py-20 px-4 sm:px-6 lg:px-12">
+        <section id="experience" className="py-16 sm:py-20 px-4 sm:px-6 lg:px-12 lg:ml-20">
           <div className="w-full max-w-6xl mx-auto">
             <h2 className="text-4xl sm:text-5xl font-bold text-center mb-12 sm:mb-16 gradient-text animate-slide-in-up">
               Experience Timeline
@@ -489,9 +512,9 @@ export default function Portfolio() {
                 <div 
                   key={index}
                   data-experience-index={index}
-                  className={`relative flex items-start mb-10 sm:mb-16 transition-all duration-700 ${index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'} ${revealedExperiences.has(index) ? 'scroll-reveal' : 'opacity-30'} stagger-${index + 1}`}
+                  className={`relative flex items-start mb-10 sm:mb-16 transition-all duration-1000 ${index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'} ${revealedExperiences.has(index) ? 'opacity-100 translate-y-0 scale-100' : 'opacity-0 translate-y-20 scale-95'}`}
                   style={{
-                    animationDelay: revealedExperiences.has(index) ? `${index * 0.1}s` : '0s'
+                    transitionDelay: revealedExperiences.has(index) ? `${index * 50}ms` : '0ms'
                   }}
                 >
                   {/* Timeline Dot */}
@@ -535,7 +558,7 @@ export default function Portfolio() {
         </section>
 
         {/* Modern Skills Section */}
-        <section id="skills" className="py-16 sm:py-20 px-4 sm:px-6 lg:px-12">
+        <section id="skills" className="py-16 sm:py-20 px-4 sm:px-6 lg:px-12 lg:ml-20">
           <div className="w-full max-w-6xl mx-auto">
             <h2 className="text-4xl sm:text-5xl font-bold text-center mb-12 sm:mb-16 gradient-text animate-slide-in-up">
               Skills & Technologies
@@ -587,7 +610,7 @@ export default function Portfolio() {
         </section>
 
         {/* Modern Projects Section */}
-        <section id="projects" className="py-16 sm:py-20 px-4 sm:px-6 lg:px-12">
+        <section id="projects" className="py-16 sm:py-20 px-4 sm:px-6 lg:px-12 lg:ml-20">
           <div className="w-full max-w-7xl mx-auto">
             <h2 className="text-4xl sm:text-5xl font-bold text-center mb-12 sm:mb-16 gradient-text animate-slide-in-up">
               Featured Projects
@@ -696,7 +719,7 @@ export default function Portfolio() {
         </section>
 
         {/* Modern Contact Section */}
-        <section id="contact" className="py-16 sm:py-20 px-4 sm:px-6 lg:px-12">
+        <section id="contact" className="py-16 sm:py-20 px-4 sm:px-6 lg:px-12 lg:ml-20">
           <div className="w-full max-w-4xl mx-auto text-center">
             <h2 className="text-4xl sm:text-5xl font-bold mb-6 sm:mb-8 gradient-text animate-slide-in-up">
               Let's Work Together
@@ -759,7 +782,7 @@ export default function Portfolio() {
       </main>
 
       {/* Modern Footer */}
-      <footer className="border-t border-white/10 py-12 sm:py-16 px-4 sm:px-6 lg:px-12">
+      <footer className="border-t border-white/10 py-12 sm:py-16 px-4 sm:px-6 lg:px-12 lg:ml-20">
         <div className="w-full max-w-6xl mx-auto">
           <div className="grid md:grid-cols-4 gap-8 sm:gap-12 mb-10 sm:mb-12">
             <div className="md:col-span-2 animate-slide-in-left">
