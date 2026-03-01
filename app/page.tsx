@@ -356,8 +356,8 @@ export default function Portfolio() {
               key={item.id}
               onClick={() => scrollToSection(item.id)}
               className={`w-full h-10 rounded-lg mb-1 flex items-center justify-center transition-all duration-500 relative overflow-hidden group ${activeSection === item.id
-                  ? 'bg-gradient-to-r from-cyan-500 to-blue-500 text-white shadow-lg shadow-cyan-500/20 animate-glow'
-                  : 'text-gray-500 hover:text-white hover:bg-white/10'
+                ? 'bg-gradient-to-r from-cyan-500 to-blue-500 text-white shadow-lg shadow-cyan-500/20 animate-glow'
+                : 'text-gray-500 hover:text-white hover:bg-white/10'
                 } stagger-${index + 1} animate-slide-in-left`}
               title={item.label}
             >
@@ -743,7 +743,7 @@ export default function Portfolio() {
               </p>
               <button
                 onClick={() => scrollToSection('contact')}
-                className="group bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-700 hover:to-blue-700 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-xl sm:rounded-2xl transition-all duration-500 transform hover:scale-105 inline-flex items-center space-x-2 sm:space-x-3 btn-modern animate-glow text-sm sm:text-base shadow-lg shadow-cyan-500/50 hover:shadow-cyan-500/70 active:shadow-cyan-500/30 active:scale-95"
+                className="group bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-xl sm:rounded-2xl flex items-center justify-center space-x-2 sm:space-x-3 btn-modern a text-sm sm:text-base"
               >
                 <MessageSquare size={18} className="sm:w-5 sm:h-5 group-hover:rotate-12 transition-transform duration-300" />
                 <span>Discuss Your Project</span>
@@ -797,7 +797,7 @@ export default function Portfolio() {
               <div className="flex flex-col sm:flex-row flex-wrap justify-center gap-3 sm:gap-4">
                 <a
                   href="mailto:h.harrir@esi-sba.dz"
-                  className="group bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-700 hover:to-blue-700 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-xl sm:rounded-2xl transition-all duration-500 transform hover:scale-105 inline-flex items-center justify-center space-x-2 sm:space-x-3 btn-modern animate-glow text-sm sm:text-base shadow-lg shadow-cyan-500/50 hover:shadow-cyan-500/70 active:shadow-cyan-500/30 active:scale-95"
+                  className="group bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-xl sm:rounded-2xl flex items-center justify-center space-x-2 sm:space-x-3 btn-modern a text-sm sm:text-base"
                 >
                   <Coffee size={18} className="sm:w-5 sm:h-5 group-hover:rotate-12 transition-transform duration-300" />
                   <span>Start a Conversation</span>
