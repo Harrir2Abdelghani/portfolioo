@@ -3,22 +3,44 @@
 import React, { useState, useEffect } from 'react';
 import { ChevronDown, Mail, Phone, MapPin, Linkedin, Github, ExternalLink, Calendar, Code, Briefcase, GraduationCap, User, Menu, X, Download, Star, Award, Zap, Target, ArrowRight, Globe, Users, TrendingUp, Eye, GitBranch, Layers, Coffee, Rocket, Heart, Brain, Lightbulb, Palette, Monitor, Smartphone, Database, Server, Cloud, Shield, Building, Clock, CheckCircle, Lock, UserCheck, BarChart3, MessageSquare, Settings, ShoppingCart } from 'lucide-react';
 
-// Typing Animation Component
-function TypingAnimation({ text, speed = 100 }: { text: string; speed?: number }) {
+// Typing Animation Component with Delete Loop
+function TypingAnimation({ text, speed = 80 }: { text: string; speed?: number }) {
   const [displayedText, setDisplayedText] = useState('');
   const [index, setIndex] = useState(0);
+  const [isDeleting, setIsDeleting] = useState(false);
 
   useEffect(() => {
-    if (index < text.length) {
-      const timer = setTimeout(() => {
-        setDisplayedText(text.substring(0, index + 1));
-        setIndex(index + 1);
-      }, speed);
-      return () => clearTimeout(timer);
-    }
-  }, [index, text, speed]);
+    const timer = setTimeout(() => {
+      if (!isDeleting) {
+        // Typing phase
+        if (index < text.length) {
+          setDisplayedText(text.substring(0, index + 1));
+          setIndex(index + 1);
+        } else {
+          // Start deleting after a pause
+          setTimeout(() => setIsDeleting(true), 500);
+        }
+      } else {
+        // Deleting phase
+        if (index > 0) {
+          setDisplayedText(text.substring(0, index - 1));
+          setIndex(index - 1);
+        } else {
+          // Start typing again after a pause
+          setIsDeleting(false);
+        }
+      }
+    }, speed);
+    
+    return () => clearTimeout(timer);
+  }, [index, text, speed, isDeleting]);
 
-  return <>{displayedText}</>;
+  return (
+    <>
+      {displayedText}
+      <span className="animate-pulse">|</span>
+    </>
+  );
 }
 
 export default function Portfolio() {
@@ -293,7 +315,7 @@ export default function Portfolio() {
   ];
 
   return (
-    <div className="min-h-screen bg-black text-white overflow-x-hidden">
+    <div className="min-h-screen bg-black text-white overflow-x-hidden relative">
       {/* Tech-Themed Animated Background */}
       <div className="fixed inset-0 z-0 overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-slate-950 via-black to-slate-900"></div>
@@ -409,22 +431,22 @@ export default function Portfolio() {
             <div className={`flex flex-col sm:flex-row flex-wrap justify-center gap-4 sm:gap-6 mb-12 sm:mb-16 transition-all duration-1000 ${isVisible ? 'animate-slide-in-up stagger-4' : ''}`}>
               <button
                 onClick={() => scrollToSection('contact')}
-                className="group bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-xl sm:rounded-2xl transition-all duration-500 transform hover:scale-105 flex items-center justify-center space-x-2 sm:space-x-3 btn-modern animate-glow text-sm sm:text-base"
+                className="group bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-xl sm:rounded-2xl transition-all duration-500 transform hover:scale-105 flex items-center justify-center space-x-2 sm:space-x-3 btn-modern animate-glow text-sm sm:text-base shadow-lg shadow-cyan-500/50 hover:shadow-cyan-500/70 active:shadow-cyan-500/30 active:scale-95"
               >
-                <Coffee size={18} className="sm:w-5 sm:h-5" />
+                <Coffee size={18} className="sm:w-5 sm:h-5 group-hover:rotate-12 transition-transform duration-300" />
                 <span className="font-medium">Let's Talk</span>
                 <ArrowRight size={16} className="sm:w-5 sm:h-5 group-hover:translate-x-1 transition-transform duration-300" />
               </button>
               <button
                 onClick={downloadCV}
-                className="glass glass-hover text-white px-6 sm:px-8 py-3 sm:py-4 rounded-xl sm:rounded-2xl transition-all duration-500 transform hover:scale-105 flex items-center justify-center space-x-2 sm:space-x-3 btn-modern text-sm sm:text-base"
+                className="glass glass-hover text-white px-6 sm:px-8 py-3 sm:py-4 rounded-xl sm:rounded-2xl transition-all duration-500 transform hover:scale-105 flex items-center justify-center space-x-2 sm:space-x-3 btn-modern text-sm sm:text-base shadow-lg shadow-blue-500/30 hover:shadow-blue-500/50 active:shadow-blue-500/20 active:scale-95 hover:bg-white/20"
               >
-                <Download size={18} className="sm:w-5 sm:h-5" />
+                <Download size={18} className="sm:w-5 sm:h-5 group-hover:animate-bounce transition-all" />
                 <span className="font-medium">Download CV</span>
               </button>
               <button
                 onClick={() => scrollToSection('projects')}
-                className="glass glass-hover text-white px-6 sm:px-8 py-3 sm:py-4 rounded-xl sm:rounded-2xl transition-all duration-500 transform hover:scale-105 flex items-center justify-center space-x-2 sm:space-x-3 btn-modern text-sm sm:text-base"
+                className="glass glass-hover text-white px-6 sm:px-8 py-3 sm:py-4 rounded-xl sm:rounded-2xl transition-all duration-500 transform hover:scale-105 flex items-center justify-center space-x-2 sm:space-x-3 btn-modern text-sm sm:text-base shadow-lg shadow-purple-500/30 hover:shadow-purple-500/50 active:shadow-purple-500/20 active:scale-95 hover:bg-white/20"
               >
                 <Eye size={18} className="sm:w-5 sm:h-5" />
                 <span className="font-medium">View Work</span>
@@ -722,11 +744,11 @@ export default function Portfolio() {
               </p>
               <button
                 onClick={() => scrollToSection('contact')}
-                className="bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-700 hover:to-blue-700 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-xl sm:rounded-2xl transition-all duration-500 transform hover:scale-105 inline-flex items-center space-x-2 sm:space-x-3 btn-modern animate-glow text-sm sm:text-base"
+                className="group bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-700 hover:to-blue-700 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-xl sm:rounded-2xl transition-all duration-500 transform hover:scale-105 inline-flex items-center space-x-2 sm:space-x-3 btn-modern animate-glow text-sm sm:text-base shadow-lg shadow-cyan-500/50 hover:shadow-cyan-500/70 active:shadow-cyan-500/30 active:scale-95"
               >
-                <MessageSquare size={18} className="sm:w-5 sm:h-5" />
+                <MessageSquare size={18} className="sm:w-5 sm:h-5 group-hover:rotate-12 transition-transform duration-300" />
                 <span>Discuss Your Project</span>
-                <ArrowRight size={16} className="sm:w-5 sm:h-5" />
+                <ArrowRight size={16} className="sm:w-5 sm:h-5 group-hover:translate-x-1 transition-transform duration-300" />
               </button>
             </div>
           </div>
@@ -776,15 +798,15 @@ export default function Portfolio() {
               <div className="flex flex-col sm:flex-row flex-wrap justify-center gap-3 sm:gap-4">
                 <a
                   href="mailto:h.harrir@esi-sba.dz"
-                  className="bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-700 hover:to-blue-700 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-xl sm:rounded-2xl transition-all duration-500 transform hover:scale-105 inline-flex items-center justify-center space-x-2 sm:space-x-3 btn-modern animate-glow text-sm sm:text-base"
+                  className="group bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-700 hover:to-blue-700 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-xl sm:rounded-2xl transition-all duration-500 transform hover:scale-105 inline-flex items-center justify-center space-x-2 sm:space-x-3 btn-modern animate-glow text-sm sm:text-base shadow-lg shadow-cyan-500/50 hover:shadow-cyan-500/70 active:shadow-cyan-500/30 active:scale-95"
                 >
-                  <Coffee size={18} className="sm:w-5 sm:h-5" />
+                  <Coffee size={18} className="sm:w-5 sm:h-5 group-hover:rotate-12 transition-transform duration-300" />
                   <span>Start a Conversation</span>
-                  <ArrowRight size={16} className="sm:w-5 sm:h-5" />
+                  <ArrowRight size={16} className="sm:w-5 sm:h-5 group-hover:translate-x-1 transition-transform duration-300" />
                 </a>
                 <button
                   onClick={downloadCV}
-                  className="glass glass-hover text-white px-6 sm:px-8 py-3 sm:py-4 rounded-xl sm:rounded-2xl transition-all duration-500 transform hover:scale-105 inline-flex items-center justify-center space-x-2 sm:space-x-3 btn-modern text-sm sm:text-base"
+                  className="glass glass-hover text-white px-6 sm:px-8 py-3 sm:py-4 rounded-xl sm:rounded-2xl transition-all duration-500 transform hover:scale-105 inline-flex items-center justify-center space-x-2 sm:space-x-3 btn-modern text-sm sm:text-base shadow-lg shadow-blue-500/30 hover:shadow-blue-500/50 active:shadow-blue-500/20 active:scale-95 hover:bg-white/20"
                 >
                   <Download size={18} className="sm:w-5 sm:h-5" />
                   <span>Download CV</span>
